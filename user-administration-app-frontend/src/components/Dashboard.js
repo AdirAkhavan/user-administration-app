@@ -1,67 +1,25 @@
 import './Dashboard.css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUsers, createUser, deleteUser } from '../services/UserService';
 import UserForm from './UserForm';
 import UserTable from './UserTable';
 import DeleteUserForm from './DeleteUserForm';
 import { clearAuthCredentials } from '../utils/api';
+import useUserManagement from '../hooks/useUserManagement';
 
 const Dashboard = () => {
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState('');
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
+  const {
+    users,
+    error,
+    currentPage,
+    totalPages,
+    handleCreateUser,
+    handleDeleteUser,
+    handlePageChange,
+    handleRefresh,
+  } = useUserManagement();
+
   const navigate = useNavigate();
-
-  const fetchUsers = async (page = 0) => {
-    try {
-      const data = await getUsers(page);
-      setUsers(data.content);
-      setTotalPages(data.totalPages);
-      setCurrentPage(data.pageable.pageNumber);
-    } catch (error) {
-      console.error("Error fetching users:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchUsers(currentPage);
-  }, [currentPage]);
-
-  const handleCreateUser = async (user) => {
-    setError('');
-    try {
-      await createUser(user);
-      fetchUsers(currentPage);
-      alert(`The user ${user.email} was created successfully`)
-    } catch (error) {
-      const errorResponseBody = error.response?.data.errors?.join(',\n') || error;
-      const errorMessage = `User creation failed: \n${errorResponseBody}`;
-      setError(errorMessage);
-      alert(errorMessage);
-    }
-  };
-
-  const handleDeleteUser = async (email) => {
-    setError('');
-    try {
-      await deleteUser(email);
-      fetchUsers(currentPage);
-      alert(`The user ${email} was deleted successfully`)
-    } catch (error) {
-      const errorResponseBody = error.response?.data.errors?.join(',\n') || error;
-      const errorMessage = `User deletion failed: \n${errorResponseBody}`;
-      setError(errorMessage);
-      alert(errorMessage);
-    }
-  };
-
-  const handlePageChange = (page) => {
-    if (page >= 0 && page < totalPages) {
-      setCurrentPage(page);
-    }
-  };
 
   const handleLogout = () => {
     clearAuthCredentials();
@@ -87,10 +45,16 @@ const Dashboard = () => {
         </button>
       </div>
 
+      <br />
+
+      <button onClick={handleRefresh}>Refresh Table</button>
+
+      <br />
+
       <DeleteUserForm onDelete={handleDeleteUser} />
 
-      <br></br>
-      
+      <br />
+
       <button onClick={handleLogout}>Logout</button>
     </div>
   );

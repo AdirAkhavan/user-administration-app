@@ -54,6 +54,10 @@ const useUserManagement = () => {
     }
   };
 
+  const handleRefresh = () => {
+    fetchUsers(currentPage);
+  };
+
   useEffect(() => {
     fetchUsers(currentPage);
   }, [currentPage]);
@@ -66,6 +70,7 @@ const useUserManagement = () => {
     handleCreateUser,
     handleDeleteUser,
     handlePageChange,
+    handleRefresh,
   };
 };
 
