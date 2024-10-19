@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# User Administration Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
+This frontend application is built with React and serves as the user interface for managing users within the user administration app.\
+It communicates with the backend via RESTful API calls to perform CRUD operations on user data.
 
-## Available Scripts
+## Modules
+### App.js
+The main component that sets up the router for the application.\
+It defines the routes for the login page and the dashboard, rendering the appropriate components based on the current URL.
 
-In the project directory, you can run:
+### Login.js
+Handles user authentication. It presents a form for entering the username and password.\
+Upon successful login, it stores the credentials in local storage and navigates to the dashboard.
 
-### `npm start`
+### Dashboard.js
+The central component for user management. It integrates user-related functionalities, including creating and deleting users, displaying user data, and navigating through pages of the users table.\
+It uses the useUserManagement custom hook to manage user data and handle operations.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### useUserManagement.js
+A custom React hook that encapsulates the logic for fetching, creating, deleting, and refreshing user data.\
+It manages the state of users, error messages, and pagination, providing a clean interface for the Dashboard component.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### UserServices.js
+Contains the API service functions for interacting with the backend. It includes methods for fetching the user list, creating a new user, and deleting an existing user.
 
-### `npm test`
+### api.js
+Sets up the Axios instance for making HTTP requests to the backend. It configures the base URL and adds authorization headers using Basic Authentication. It also includes functions to manage authentication credentials stored in local storage.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### constants.js
+Defines constants used throughout the application, including server host, port, base URL for API requests, and pagination settings.
 
-### `npm run build`
+### UserForm.js
+A form component for creating new users. It handles input for user details and submits the data to create a new user.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### UserTable.js
+Displays a paginated list of users in a table format. It includes functionality to delete users.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### DeleteUserForm.js
+A form component that allows users to delete an existing user by entering their email address.
