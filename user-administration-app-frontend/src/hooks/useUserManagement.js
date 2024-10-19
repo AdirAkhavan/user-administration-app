@@ -28,7 +28,7 @@ const useUserManagement = () => {
       fetchUsers(currentPage);
       alert(`User ${user.email} was created successfully`);
     } catch (error) {
-      const errorResponseBody = error.response?.data.errors?.join('\n') || 'Error creating user';
+      const errorResponseBody = error.response?.data.errors?.join(',\n') || 'Error creating user';
       const errorMessage = `User creation failed: \n${errorResponseBody}`;
       setError(errorMessage);
       alert(errorMessage);
@@ -42,7 +42,7 @@ const useUserManagement = () => {
       fetchUsers(currentPage);
       alert(`User ${email} was deleted successfully`);
     } catch (error) {
-      const errorResponseBody = error.response?.data.errors?.join('\n') || 'Error deleting user';
+      const errorResponseBody = error.response?.data.errors?.join(',\n') || 'Error deleting user';
       const errorMessage = `User deletion failed: \n${errorResponseBody}`;
       setError(errorMessage);
       alert(errorMessage);

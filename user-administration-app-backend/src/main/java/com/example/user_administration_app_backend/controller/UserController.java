@@ -7,9 +7,7 @@ import com.example.user_administration_app_backend.mapper.UserMapper;
 import com.example.user_administration_app_backend.model.AppUser;
 import com.example.user_administration_app_backend.service.UserService;
 import com.example.user_administration_app_backend.validation.UserValidator;
-
 import jakarta.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
