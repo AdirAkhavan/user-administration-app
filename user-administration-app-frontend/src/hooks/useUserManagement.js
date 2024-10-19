@@ -8,6 +8,7 @@ const useUserManagement = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   const fetchUsers = async (page = 0) => {
+    setError('');
     try {
       const data = await getUsers(page);
       setUsers(data.content);
