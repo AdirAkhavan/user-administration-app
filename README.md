@@ -1,7 +1,7 @@
 # User Administration Web Application
 
 ## Description
-This web application allows administrators to manage users within an application.
+This web application allows administrators to manage users within an application.\
 It provides an interface for creating, deleting, and viewing user information.
 
 ## Features
