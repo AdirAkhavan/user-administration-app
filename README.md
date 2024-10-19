@@ -23,3 +23,6 @@ It provides an interface for creating, deleting, and viewing user information.
 5. Install dependencies using 'npm install'
 6. Start the application using 'npm start'
 7. If the app doesn't open automatically, go to http://localhost:3000 in your web browser
+8. Once you get to the login page, use the following credentials:\
+    Username: testuser\
+    Password: password
