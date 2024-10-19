@@ -38,14 +38,14 @@ Helps decouple the API contract from the domain model, improving flexibility.
 
 ### UserDTO
 Data Transfer Object representing user information returned in responses, omitting sensitive data such as the password.\
-It enhances security and decouples the internal data model from the API.
+Enhances security and decouples the internal data model from the API.
 
 ### UserMapper
 Utility class for mapping between UserCreationDTO, AppUser, and UserDTO objects, facilitating data conversion.
 
 ### GlobalExceptionHandler
 Handles exceptions globally, providing meaningful error responses.\
-This promotes cleaner code by reducing error-handling logic in controllers.
+Promotes cleaner code by reducing error-handling logic in controllers.
 
 ### ErrorResponse
 Class for structuring error responses sent to clients, encapsulating a list of error messages.\
